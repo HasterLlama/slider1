@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zadanie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        main{
+            background-color: black;
+            color: white;
+            width: 120vh;
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #obrazek{
+            position: absolute;
+            top:3vh;
+        }
+        img{
+            width: 55vh;
+            height: 75vh;
+        }
+        main > span{
+            position: relative;
+            top: 40vh;
+            font-size: 2.5vh;
+        }
+    </style>
+</head>
+<body onload="zmienslajd()">
+
+    <main>
+        <div id="obrazek"></div>
+        <span onclick="ustawslajd(1)" style="cursor:pointer;">[ 1 ]</span>
+        <span onclick="ustawslajd(2)" style="cursor:pointer;">[ 2 ]</span>
+        <span onclick="ustawslajd(3)" style="cursor:pointer;">[ 3 ]</span>
+        <span onclick="ustawslajd(4)" style="cursor:pointer;">[ 4 ]</span>
+        <span onclick="ustawslajd(5)" style="cursor:pointer;">[ 5 ]</span>
+        <span onclick="ustawslajd(6)" style="cursor:pointer;">[ 6 ]</span>
+        <span onclick="ustawslajd(7)" style="cursor:pointer;">[ 7 ]</span>
+        <span onclick="ustawslajd(8)" style="cursor:pointer;">[ 8 ]</span>
+        <span onclick="ustawslajd(9)" style="cursor:pointer;">[ 9 ]</span>
+        <span onclick="ustawslajd(10)" style="cursor:pointer;">[ 10 ]</span>
+        <span onclick="ustawslajd(11)" style="cursor:pointer;">[ 11 ]</span>
+        <span onclick="ustawslajd(12)" style="cursor:pointer;">[ 12 ]</span>
+        <span onclick="ustawslajd(13)" style="cursor:pointer;">[ 13 ]</span>
+        <span onclick="ustawslajd(14)" style="cursor:pointer;">[ 14 ]</span>
+        <span onclick="ustawslajd(15)" style="cursor:pointer;">[ 15 ]</span>
+        <span onclick="ustawslajd(16)" style="cursor:pointer;">[ 16 ]</span>
+        <span onclick="ustawslajd(17)" style="cursor:pointer;">[ 17 ]</span>
+        <span onclick="ustawslajd(18)" style="cursor:pointer;">[ 18 ]</span>
+        <span onclick="ustawslajd(19)" style="cursor:pointer;">[ 19 ]</span>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var numer = 0;
+        let obrazeek = document.getElementById("obrazek")
+        function ustawslajd(nrslajdu)
+		{
+			clearTimeout(timer1);
+			clearTimeout(timer2);
+			numer = nrslajdu - 1;
+				
+			schowaj();
+			setTimeout("zmienslajd()", 500);
+		}
+        function schowaj()
+		{
+			$("#obrazek").fadeOut(500);
+		}
+        function zmienslajd()
+        {
+            numer++; if (numer>19) numer=1;
+
+            var plik = "<img id=\"obraz\" src=\"../za" + numer + ".png\" >";
+            obrazeek.innerHTML = plik;
+            $("#obrazek").fadeIn(1000)
+
+            timer1 = setTimeout("zmienslajd()", 3000);
+			timer2 = setTimeout("schowaj()", 2500);
+        }
+    </script>
+</body>
+</html>
